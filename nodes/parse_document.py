@@ -15,8 +15,11 @@ def parse_document_node(state: dict) -> dict:
 if __name__ == "__main__":
     # os.environ["UPSTAGE_API_KEY"] = "your-key-here" 
     test_state = {
-        "file_path": "samplefile.pdf" 
+        #"file_path": "sample.pdf" 
+        "file_path": "sample.jpg" 
     }
     output_state = parse_document_node(test_state)
+    
     print("\n=== Parsed Document ===\n")
-    print(output_state["document_text"][:500])
+    print(output_state["document_text"])
+    
