@@ -1,6 +1,6 @@
 import os
 from langchain_upstage import UpstageEmbeddings
-from langchain.vectorstores import Chroma
+from langchain_community.vectorstores import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 
@@ -36,5 +36,19 @@ if __name__ == "__main__":
     }
 
     output_state = embed_docs_node(test_state)
-    print("\n=== Chroma Vector DB 저장 경로 ===")
+    print("\n=== Chroma Vector DB path ===")
     print(output_state["vectordb_path"])
+
+
+    # 빼서 확인
+    embeddings = UpstageEmbeddings(api_key=os.getenv("UPSTAGE_API_KEY"), model="embedding-query")
+    db = Chroma(persist_directory="./chroma_db", embedding_function=embeddings)
+
+    print("# of docs:", db._collection.count())
+
+
+    # 유사 문서 검색
+    results = db.similarity_search("강남구 오피스텔", k=2)
+    print("\n=== Similar documents: ===")
+    for doc in results:
+        print(doc.page_content[:200])
