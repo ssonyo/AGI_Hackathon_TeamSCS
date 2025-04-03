@@ -24,7 +24,7 @@ def get_retriever_runnable(vectordb_path: str):
         persist_directory=vectordb_path,
         embedding_function=embeddings
     )
-    retriever = db.as_retriever()
+    retriever = db.as_retriever(search_kwargs={"k": 10})  # ✅ Top-k를 10으로 확대
 
     # LangSmith에서 추적되는 Runnable 형태
     return RunnableLambda(lambda q: retriever.get_relevant_documents(q))
