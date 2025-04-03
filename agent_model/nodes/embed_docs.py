@@ -3,6 +3,9 @@ from langchain_upstage import UpstageEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
+from dotenv import load_dotenv
+load_dotenv()
+
 
 def embed_docs_node(state: dict) -> dict:
     '''
@@ -10,7 +13,7 @@ def embed_docs_node(state: dict) -> dict:
     '''
     document_text = state["document_text"]
 
-    splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+    splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
     docs = splitter.create_documents([document_text])
 
     embeddings = UpstageEmbeddings(

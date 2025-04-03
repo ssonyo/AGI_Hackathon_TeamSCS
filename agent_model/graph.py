@@ -1,14 +1,17 @@
 import os
 from langgraph.graph import StateGraph, END
 from typing import TypedDict, Optional
+from dotenv import load_dotenv
+load_dotenv()
 
-# import nodes(modules)
-from nodes.parse_document import parse_document_node
-from nodes.is_valid import is_valid_node
-from nodes.embed_docs import embed_docs_node
-from nodes.calculate_yield import calculate_yield_node
-from nodes.evaluate_risk import evaluate_risk_node
-from nodes.generate_report import generate_report_node
+# Import node modules
+from agent_model.nodes.parse_document import parse_document_node
+from agent_model.nodes.is_valid import is_valid_node
+from agent_model.nodes.embed_docs import embed_docs_node
+from agent_model.nodes.calculate_yield import calculate_yield_node
+from agent_model.nodes.evaluate_risk import evaluate_risk_node
+from agent_model.nodes.generate_report import generate_report_node
+from agent_model.nodes.create_file import create_file_node
 
 # define states
 class RealEstateState(TypedDict, total=False):
@@ -30,8 +33,9 @@ graph_builder.add_node("embed_docs", embed_docs_node)
 graph_builder.add_node("calculate_yield", calculate_yield_node)
 graph_builder.add_node("evaluate_risk", evaluate_risk_node)
 graph_builder.add_node("generate_report", generate_report_node)
+graph_builder.add_node("create_file", create_file_node)
 
-# define agentif flow
+# define agentic flow
 graph_builder.set_entry_point("parse_document")
 graph_builder.add_edge("parse_document", "check_validity")
 
@@ -45,5 +49,7 @@ graph_builder.add_edge("embed_docs", "calculate_yield")
 graph_builder.add_edge("calculate_yield", "evaluate_risk")
 graph_builder.add_edge("evaluate_risk", "generate_report")
 graph_builder.add_edge("generate_report", END)
+# graph_builder.add_edge("generate_report", "create_file")
+# graph_builder.add_edge("create_file", END)
 
 app = graph_builder.compile()
