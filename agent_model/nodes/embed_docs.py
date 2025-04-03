@@ -3,6 +3,9 @@ from langchain_upstage import UpstageEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
+from dotenv import load_dotenv
+load_dotenv()
+
 
 def embed_docs_node(state: dict) -> dict:
     '''
