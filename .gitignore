@@ -5,5 +5,12 @@ chroma_db/
 .env
 *.log
 *.pyc
+
+myvenv/
+pages/__pycache__/
+.env
+.cache/
+
 */.DS_Store
 .DS_Store
+
