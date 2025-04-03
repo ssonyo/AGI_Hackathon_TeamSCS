@@ -13,7 +13,7 @@ def embed_docs_node(state: dict) -> dict:
     '''
     document_text = state["document_text"]
 
-    splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+    splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
     docs = splitter.create_documents([document_text])
 
     embeddings = UpstageEmbeddings(
