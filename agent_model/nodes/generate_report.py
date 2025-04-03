@@ -123,4 +123,3 @@ if __name__ == "__main__":
     output_state = generate_report_node(test_state)
     print("\n=== Output (Report) 🎆🎉📈 ===")
     print(output_state["final_report"])
-    print(f"\nPDF 저장 위치: {output_state['final_report_path']}")
