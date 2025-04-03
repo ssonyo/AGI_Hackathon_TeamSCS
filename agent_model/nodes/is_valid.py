@@ -1,6 +1,9 @@
 from langchain_upstage import ChatUpstage
 from langchain_core.messages import HumanMessage
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
 
 chat = ChatUpstage(
     api_key=os.getenv("UPSTAGE_API_KEY"),

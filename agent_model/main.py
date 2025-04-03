@@ -1,10 +1,12 @@
 import os
-from graph import app #graph.py 에서 컴파일
+from agent_model.graph import app #graph.py 에서 컴파일
 from pprint import pprint
+from dotenv import load_dotenv
+load_dotenv()
 
 input_state = {
-    "file_path": "sample.pdf", 
-    "query": "강남구 오피스텔, 보증금 1억, 월세 90만원 기준 수익률 및 위험 평가"
+    "file_path": "agent_model/sample.pdf", 
+    "query": "첨부한 고시 문서를 바탕으로 적절한 부동산 파생상품을 분석·설계하고, 투자 판단에 필요한 전문 보고서를 작성해주세요."
 }
 
 final_state = app.invoke(input_state)
