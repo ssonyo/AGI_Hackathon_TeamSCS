@@ -5,3 +5,7 @@ chroma_db/
 .env
 *.log
 *.pyc
+myvenv/
+pages/__pycache__/
+.env
+.cache/
