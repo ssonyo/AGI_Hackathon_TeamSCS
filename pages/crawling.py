@@ -6,6 +6,10 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import re
 from bs4 import BeautifulSoup
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+
 def extract_article_no(url):
     match = re.search(r'articleNo=(\d+)', url)
     if match:
@@ -26,7 +30,17 @@ def parse_table_to_dict(table):
 
 def get_property_details(property_list):
     results = []
-    driver = webdriver.Chrome()
+    chrome_options = Options()
+    chrome_options.add_argument("--headless=new")  # ← 최신 크롬은 이렇게
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--window-size=1920,1080")
+    chrome_options.add_experimental_option("detach", True)
+
+    chrome_options.add_experimental_option("excludeSwitches",["enable-logging"])
+
+    service = Service(executable_path=ChromeDriverManager().install())
+
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     wait = WebDriverWait(driver, 10)
 
     try:
@@ -97,7 +111,17 @@ def get_property_details(property_list):
 def get_property_list(latitude, longitude):
     """특정 위도, 경도의 매물 목록을 가져오는 함수"""
     results = []
-    driver = None
+    chrome_options = Options()
+    chrome_options.add_argument("--headless=new")  # ← 최신 크롬은 이렇게
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--window-size=1920,1080")
+    chrome_options.add_experimental_option("detach", True)
+
+    chrome_options.add_experimental_option("excludeSwitches",["enable-logging"])
+
+    service = Service(executable_path=ChromeDriverManager().install())
+
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     
     try:
         # 웹드라이버 설정
@@ -173,9 +197,9 @@ longitude = 127.002425  # 예시 경도
 property_list = get_property_list(latitude, longitude)
 print(f"총 {len(property_list)}개의 매물이 발견되었습니다.")
 
-a = get_property_details(property_list)
-for i in a:
-    print(i)
+# a = get_property_details(property_list)
+# for i in a:
+#     print(i)
 
 
         
