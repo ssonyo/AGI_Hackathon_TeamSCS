@@ -17,9 +17,8 @@ def parse_document_node(state: dict) -> dict:
 
 if __name__ == "__main__":
     # os.environ["UPSTAGE_API_KEY"] = "your-key-here" 
-    test_state = {
-        #"file_path": "sample.pdf" 
-        "file_path": "C:\\jsh\\ybigta\\upstage\\upstage_scs\\agent_model\\sample.pdf" 
+    test_state = { 
+        "file_path": "sample.pdf" 
     }
     output_state = parse_document_node(test_state)
     
