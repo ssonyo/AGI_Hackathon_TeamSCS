@@ -1,103 +1,103 @@
-# 🧠 미래형 부동산/토지 파생 금융상품 생성기 (AI Agent 기반)
+# ✅ Future Real Estate/Land Derivative Financial Product Generator (AI Agent-based)
 
-## 🔗 프로젝트 소개
+## 🔗 Project Introduction
 
-이 프로젝트는 **공공 정책 문서 + 실시간 부동산 정보**를 결합하여,  
-**AI Agent가 실제 투자 상품을 설계하고 수익률을 분석**하는 시스템입니다.  
-특히 Web3 기반의 **토큰화·파생상품 설계 구조까지 염두에 둔 미래형 금융 서비스**를 지향합니다.
-
----
-
-## 🚀 주요 기술 스택
-
-| 기술                                        | 설명                                                        |
-| ------------------------------------------- | ----------------------------------------------------------- |
-| 🧠 **LangChain Agent**                      | 고시 문서 분석 + 수익률 추정용 Tool 기반 AI Agent 구성      |
-| 🔍 **RAG (Retrieval Augmented Generation)** | 국토부 고시 PDF 문서를 기반으로 Embedding → 질의 응답       |
-| 🧠 **Upstage LLM (Solar-Pro)**              | 고성능 한국어 특화 LLM으로 문서 분석 + 설명 자동화          |
-| 🧾 **Upstage Embedding + FAISS**            | RAG 구축용 벡터 임베딩 및 검색 최적화                       |
-| 🧰 **Selenium 기반 크롤러**                 | 네이버 부동산에서 실매물 정보(가격, 면적, 도시계획 등) 수집 |
-| 🗺️ **Geo 기반 분석**                        | 지역 위경도 기반 매물 검색 및 매핑                          |
-| 🧮 **Rule-based ROI 계산기**                | 정책 상태 기반 ‘프리미엄 계수’를 룰로 적용한 수익률 계산    |
-| 💻 **Streamlit**                            | 대화형 분석 + 포트폴리오 리포트 UI 구성                     |
+This project combines **public policy documents + real-time real estate information** to create a system where  
+**AI Agents design actual investment products and analyze returns**.  
+It particularly aims to be a future-oriented financial service that considers **Web3-based tokenization and derivative product design structures**.
 
 ---
 
-## 📦 기능 요약
+## 🚀 Key Technologies
 
-| 기능                   | 설명                                           |
-| ---------------------- | ---------------------------------------------- |
-| 📎 문서 업로드         | 국토부 고시문서 (PDF) 업로드 가능              |
-| 🧠 행정동 추출         | 문서 내용에서 정책 대상 ‘읍면동’ 자동 추출     |
-| 📍 위치 기반 매물 수집 | 추출된 행정동의 실매물 크롤링 및 정보 정제     |
-| 📈 수익률 분석         | 고시 상태에 따른 프리미엄 계수 적용 → ROI 계산 |
-| 🧠 파생상품 생성       | LLM 기반 포트폴리오 구성 (매물 비중 포함)      |
-| 📄 리서치 보고서 생성  | AI Agent가 투자자용 종합 분석 보고서 자동 작성 |
-
----
-
-## 💡 프로젝트 특징 및 시도한 것들
-
-### ✅ 1. Upstage 기반 한국어 특화 AI + RAG 통합
-
-- Solar-Pro 기반 문서 분석 성능 우수
-- UpstageDocumentParseLoader와 Embedding으로 한글 문서 RAG 구축 최적화
-
-### ✅ 2. LangChain Agent + Custom Tool로 수익률 예측 구조
-
-- `ExtractDongsTool`: 행정동 추출
-- `EstimateYieldTool`: 개발 상태 기반 프리미엄 계수 추정
-- PromptTemplate을 통해 도구 호출 기반 행동 체인 구성
-
-### ✅ 3. 룰 기반 수익률 계산식 적용
-
-- 공사완료/정비지구/미지정 등 정책 상태에 따른 계수 부여
-- 매입가, 임대 가능 여부 등 조합한 실제 수익률 계산
-
-### ✅ 4. 부동산 실매물과 정책 문서의 실시간 연결
-
-- 네이버 부동산에서 매물 정보를 실시간 크롤링
-- 고시 문서의 정책 수혜지 여부에 따라 매물 스코어링 및 구성 가능
-
-### ✅ 5. Streamlit 기반의 유저 친화적 인터페이스
-
-- 대화형 버튼 흐름으로 행정동 분석 → 매물 수집 → 수익률 분석 → 보고서까지 흐름 제공
-- 포트폴리오 구성은 비중까지 포함한 실전 구조
+| Technology                               | Description                                                                             |
+| ---------------------------------------- | --------------------------------------------------------------------------------------- |
+| **LangChain Agent**                      | Tool-based AI Agent for analyzing policy documents and estimating returns               |
+| **RAG (Retrieval Augmented Generation)** | Embedding → Q&A based on Ministry of Land PDF documents                                 |
+| **Upstage LLM (Solar-Pro)**              | High-performance Korean-specialized LLM for document analysis and automation            |
+| **Upstage Embedding + FAISS**            | Vector embedding and search optimization for RAG construction                           |
+| **Selenium-based Crawler**               | Collects real property information (price, area, urban planning) from Naver Real Estate |
+| **Geo-based Analysis**                   | Property search and mapping based on regional coordinates                               |
+| **Rule-based ROI Calculator**            | Return calculation applying policy status-based 'premium coefficients' as rules         |
+| **Streamlit**                            | Interactive analysis + portfolio report UI configuration                                |
 
 ---
 
-## 🌍 미래 확장 방향
+## 📦 Feature Summary
 
-- Web3 기반으로 파생상품 토큰화 + DAO 기반 거래소 확장
-- 실제 투자자 위험관리 기반 등급화 모델 도입 (LLM + 통계)
-- 다양한 지역 문서를 학습시켜 자동화된 금융상품 설계 API 제공
+| Feature                            | Description                                                                 |
+| ---------------------------------- | --------------------------------------------------------------------------- |
+| Document Upload                    | Upload Ministry of Land policy documents (PDF)                              |
+| Administrative District Extraction | Automatic extraction of policy-targeted districts from document content     |
+| Location-based Property Collection | Crawling and refining real properties in extracted districts                |
+| Return Analysis                    | ROI calculation applying premium coefficients based on policy status        |
+| Derivative Product Generation      | LLM-based portfolio composition (including property weights)                |
+| Research Report Generation         | AI Agent automatically creates comprehensive analysis reports for investors |
 
 ---
 
-## 📄 사용 방법
+## 💡 Project Features and Attempts
 
-1. Streamlit 실행:
+### ✅ 1. Upstage-based Korean-specialized AI + RAG Integration
+
+- Excellent document analysis performance based on Solar-Pro
+- Optimized Korean document RAG construction with UpstageDocumentParseLoader and Embedding
+
+### ✅ 2. LangChain Agent + Custom Tool for Return Prediction Structure
+
+- `ExtractDongsTool`: Administrative district extraction
+- `EstimateYieldTool`: Development status-based premium coefficient estimation
+- Action chain configuration through PromptTemplate-based tool calls
+
+### ✅ 3. Rule-based Return Calculation Formula Application
+
+- Coefficient assignment based on policy status (construction completion/redevelopment area/unspecified)
+- Actual return calculation combining purchase price, rental possibility, etc.
+
+### ✅ 4. Real-time Connection between Real Estate Properties and Policy Documents
+
+- Real-time property information crawling from Naver Real Estate
+- Property scoring and composition based on policy benefit status in policy documents
+
+### ✅ 5. User-friendly Interface based on Streamlit
+
+- Interactive button flow providing analysis → property collection → return analysis → report
+- Portfolio composition including actual weight structure
+
+---
+
+## 🌍 Future Expansion Directions
+
+- Web3-based derivative product tokenization + DAO-based exchange expansion
+- Introduction of investor risk management-based rating model (LLM + statistics)
+- Providing automated financial product design API by learning various regional documents
+
+---
+
+## 📄 Usage Instructions
+
+1. Run Streamlit:
    streamlit run app.py
 
-2. 문서 업로드 → 분석 → 매물 확인 → 수익률 분석 → 파생상품 구성
+2. Document upload → Analysis → Property check → Return analysis → Derivative product composition
 
-3. (선택) 새로운 지역 고시문서를 반복 학습시켜 포트폴리오 다양화 가능
-
----
-
-## 🙌 팀 소개
-
-| 팀 및 기수 | 이름   | 역할                                                                                 |
-| ---------- | ------ | ------------------------------------------------------------------------------------ |
-| DS 24기    | 박정양 | 국토부 고시문서 크롤링 및 Rag 핵심 원리 설명 LangChain 구조 설계                     |
-| DS 25기    | 김소윤 | 프롬프트 고도화 output 다각화 시도 LangChain 구조 설계                               |
-| DE 25기    | 백준호 | Selenium 자동화 LangChain Agent 시스템 아키텍처 설계 및 구현 Streamlit 구현 aws 배포 |
-| DS 26기    | 조석희 | 프롬프트 고도화, LangSmith 연결, 검증 구조 설계                                      |
+3. (Optional) Portfolio diversification possible by repeatedly learning new regional policy documents
 
 ---
 
-## 📌 참고 링크
+## 🙌 Team Introduction
 
-- [국토부 고시 정보](https://www.eum.go.kr/web/gs/gv/gvGosiList.jsp)
-- [네이버 부동산](https://land.naver.com/)
-- [부동산가격지수 기반 파생금융상품 논문](https://www.smallake.kr/wp-content/uploads/2015/12/20151219_224054.pdf)
+| Team & Batch | Name           | Role                                                                                                                         |
+| ------------ | -------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| DS 24th      | Park Jeongyang | Ministry of Land policy document crawling and RAG core principles explanation, LangChain structure design                    |
+| DS 25th      | Kim Soyun      | Prompt enhancement, output diversification attempts, LangChain structure design                                              |
+| DE 25th      | Baek Junho     | Selenium automation, LangChain Agent system architecture design and implementation, Streamlit implementation, AWS deployment |
+| DS 26th      | Cho Seokhee    | Prompt enhancement, LangSmith connection, validation structure design                                                        |
+
+---
+
+## 📌 Reference Links
+
+- [Ministry of Land Policy Information](https://www.eum.go.kr/web/gs/gv/gvGosiList.jsp)
+- [Naver Real Estate](https://land.naver.com/)
+- [Derivative Financial Products based on Real Estate Price Index Paper](https://www.smallake.kr/wp-content/uploads/2015/12/20151219_224054.pdf)
