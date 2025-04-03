@@ -59,7 +59,7 @@ def calculate_yield_node(state: dict) -> dict:
 
 if __name__ == "__main__":
     test_state = {
-        "query": "파생상품 기획하고 수익률 계산해줘줘.",
+        "query": "파생상품 기획하고 수익률 계산해줘.",
         "vectordb_path": "./chroma_db"
     }
 
