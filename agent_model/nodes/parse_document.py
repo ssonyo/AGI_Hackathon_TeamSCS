@@ -1,10 +1,13 @@
 import os
 from langchain_upstage import UpstageDocumentParseLoader
 from langchain_core.documents import Document
+from dotenv import load_dotenv
+load_dotenv()
+
 
 def parse_document_node(state: dict) -> dict:
     file_path = state["file_path"]
-    loader = UpstageDocumentParseLoader(file_path, ocr="force")
+    loader = UpstageDocumentParseLoader(file_path, ocr="auto")
     pages = loader.load()
 
     full_text = "\n\n".join([page.page_content for page in pages])
@@ -14,9 +17,8 @@ def parse_document_node(state: dict) -> dict:
 
 if __name__ == "__main__":
     # os.environ["UPSTAGE_API_KEY"] = "your-key-here" 
-    test_state = {
-        #"file_path": "sample.pdf" 
-        "file_path": "sample.jpg" 
+    test_state = { 
+        "file_path": "sample.pdf" 
     }
     output_state = parse_document_node(test_state)
     
